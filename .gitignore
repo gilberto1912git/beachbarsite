@@ -1,0 +1,62 @@
+# ==============================================================================
+# Git Ignore - Bene Beach Bar Web Application
+# ==============================================================================
+
+# Sistemas Operacionais
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Editores e IDEs
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# Ferramentas de IA, Logs de Agentes e Metadados Internos
+.agents/
+.gemini/
+.system_generated/
+*.crswap
+
+# Logs e Arquivos Temporários
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.tmp
+*.temp
+
+# Arquivos de Ambiente e Segredos (Prevenção de Vazamentos)
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.cert
+*.crt
+
+# Dependências e Pastas de Build (preparação futura)
+node_modules/
+dist/
+build/
+out/
+.cache/
+
+# Pasta de Documentação Interna de Briefing / Originais Não Otimizados
+.docs/
