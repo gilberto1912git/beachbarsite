@@ -1,0 +1,2091 @@
+/* ==========================================================================
+   Bene Beach Bar - Visual 100% Estilo Praia & Beach Club Tropical
+   Inspirado em quiosques de alto padrão, beach clubs e o logotipo oficial
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Cores Tropicais & Pôr do Sol no Mar (Inspiradas no Entardecer Litorâneo) */
+  --sunset-orange: #FF5A22;
+  --sunset-orange-hover: #E0440E;
+  --sunset-coral: #FF7243;
+  --sunset-gold: #F59E0B;
+  --sunset-gold-light: #FDE68A;
+  --sunset-rose: #FB7185;
+  --sunset-peach: #FED7AA;
+  --sunset-glow: rgba(255, 90, 34, 0.32);
+
+  /* Mar e Oceano (Águas Cársticas, Turquesa e Azul Profundo) */
+  --ocean-azure: #0284C7;
+  --ocean-turquoise: #06B6D4;
+  --ocean-lagoon: #0D9488;
+  --ocean-deep: #07476D;
+  --ocean-light: #E0F7FA;
+  --ocean-foam: #F0FDFA;
+  --ocean-subtle: rgba(6, 182, 212, 0.14);
+  --ocean-glow: rgba(6, 182, 212, 0.32);
+
+  /* Tons de Areia & Madeira Praiana (Beach Vibes) */
+  --sand-pure: #FFFDF9;
+  --sand-light: #FAF5EC;
+  --sand-medium: #F5EDE0;
+  --sand-warm: #EBDBC5;
+  --sand-dune: #DEC7A7;
+  --wood-driftwood: #785A3E;
+  --wood-dark: #4A3321;
+  --wood-warm: #A06D44;
+  --palm-green: #15803D;
+  --palm-green-light: #DCFCE7;
+
+  /* Texto e Contraste Noturno do Beach Bar (WCAG AAA) */
+  --beach-navy: #0A1E30;
+  --navy-muted: #2E475D;
+  --text-primary: #12283A;
+  --text-secondary: #3D5A73;
+  --text-muted: #647E94;
+  --text-inverse: #FFFFFF;
+
+  /* Redes & Ação */
+  --whatsapp-color: #25D366;
+  --whatsapp-hover: #1EBE5D;
+  --instagram-gradient: linear-gradient(45deg, #F09433 0%, #E6683C 25%, #DC2743 50%, #CC2366 75%, #BC1888 100%);
+
+  /* Tipografia */
+  --font-beach: 'Caveat', cursive;
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Sombras Praianas Aconchegantes */
+  --shadow-sm: 0 4px 14px rgba(10, 30, 48, 0.06);
+  --shadow-md: 0 12px 28px -6px rgba(10, 30, 48, 0.1), 0 4px 12px -2px rgba(10, 30, 48, 0.04);
+  --shadow-lg: 0 22px 45px -10px rgba(10, 30, 48, 0.14);
+  --shadow-sunset: 0 14px 34px -4px rgba(255, 90, 34, 0.35);
+  --shadow-ocean: 0 14px 34px -4px rgba(2, 132, 199, 0.32);
+
+  /* Raios e Bordas */
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --radius-xl: 36px;
+  --radius-full: 9999px;
+
+  /* Transições Calmas e Estáveis (Sem tremor de overshoot) */
+  --transition-fast: 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  --transition-normal: 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  --header-height: 84px;
+  --max-width: 1240px;
+}
+
+/* ==========================================================================
+   Reset & Textura de Fundo: Mar ao Pôr do Sol
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 20px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #0A263D;
+  color: var(--text-primary);
+  line-height: 1.65;
+  overflow-x: hidden;
+  font-size: 1rem;
+  /* Fundo integrado: fusão contínua entre a luz do sol poente e o mar cristalino */
+  background-image: 
+    /* Brilho do sol poente no horizonte superior */
+    radial-gradient(ellipse 85% 45% at 50% 0%, rgba(255, 114, 67, 0.22) 0%, rgba(245, 158, 11, 0.16) 35%, transparent 70%),
+    /* Reflexos de água do mar turquesa e azul em pontos estratégicos */
+    radial-gradient(circle at 8% 28%, rgba(6, 182, 212, 0.18) 0%, transparent 42%),
+    radial-gradient(circle at 92% 42%, rgba(255, 90, 34, 0.14) 0%, transparent 48%),
+    radial-gradient(circle at 12% 64%, rgba(2, 132, 199, 0.16) 0%, transparent 50%),
+    radial-gradient(circle at 88% 82%, rgba(13, 148, 136, 0.15) 0%, transparent 48%),
+    /* Textura de maré mansa e reflexos dourados na água */
+    url("data:image/svg+xml,%3Csvg width='120' height='60' viewBox='0 0 120 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 25 C 30 15, 60 35, 90 25 C 105 20, 115 22, 120 25' fill='none' stroke='%2306B6D4' stroke-width='1.2' stroke-opacity='0.12'/%3E%3Cpath d='M0 45 C 25 35, 55 55, 85 45 C 105 38, 115 42, 120 45' fill='none' stroke='%23FF9E3B' stroke-width='1' stroke-opacity='0.08'/%3E%3C/svg%3E"),
+    /* Gradiente contínuo: céu do entardecer (laranja/coral/ouro) que se encontra com o mar cristalino (turquesa/azul cobalto) */
+    linear-gradient(180deg, 
+      #FFF5EB 0%, 
+      #FFE8D6 5%, 
+      #FFF1E8 12%, 
+      #E8FAFC 22%, 
+      #DEF7FA 35%, 
+      #EBF7FA 48%, 
+      #FFF2E6 60%, 
+      #E3F7FA 74%, 
+      #EDF9FC 88%, 
+      #DCF0F7 100%
+    );
+  background-attachment: scroll;
+  background-repeat: repeat;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+}
+
+/* ==========================================================================
+   Tipografia Estilo Praia / Beach Lounge
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--beach-navy);
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.beach-handwritten {
+  font-family: var(--font-beach);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--sunset-orange);
+  display: inline-block;
+  transform: rotate(-3deg);
+  line-height: 1;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  background: #FFFFFF;
+  color: var(--sunset-orange);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+  border: 1.5px solid rgba(255, 90, 34, 0.25);
+  box-shadow: 0 4px 14px rgba(255, 90, 34, 0.1);
+}
+
+.section-tag.tag-ocean {
+  color: var(--ocean-azure);
+  border-color: rgba(6, 182, 212, 0.35);
+  box-shadow: 0 4px 14px rgba(6, 182, 212, 0.12);
+}
+
+.section-tag.tag-gold {
+  color: #B45309;
+  border-color: rgba(245, 158, 11, 0.35);
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.12);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 740px;
+  margin: 0 auto 56px;
+  position: relative;
+}
+
+.section-title {
+  font-size: clamp(2.2rem, 3.8vw, 3rem);
+  margin-bottom: 14px;
+}
+
+.section-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* ==========================================================================
+   Separadores de Onda Praiana (SVG Wave Dividers)
+   ========================================================================== */
+.wave-divider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 5;
+}
+
+.wave-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 60px;
+}
+
+.wave-divider.wave-sand-to-white svg path {
+  fill: rgba(255, 255, 255, 0.96);
+}
+
+.wave-divider.wave-white-to-sand svg path {
+  fill: #DEF7FA;
+}
+
+.wave-divider.wave-sand-to-warm svg path {
+  fill: rgba(255, 246, 237, 0.94);
+}
+
+.wave-divider.wave-warm-to-sand svg path {
+  fill: #E3F7FA;
+}
+
+/* ==========================================================================
+   Layout Containers
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-padding {
+  padding: 100px 0;
+  position: relative;
+}
+
+.bg-sand-warm {
+  background: linear-gradient(180deg, rgba(255, 246, 237, 0.88) 0%, rgba(228, 250, 253, 0.82) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.bg-white-beach {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(238, 252, 255, 0.9) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ==========================================================================
+   Botões Estilo Beach Club (Estabilizados, Suaves, sem Jitter)
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 30px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  text-align: center;
+  position: relative;
+  user-select: none;
+  border: 2px solid transparent;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--sunset-orange) 0%, #FFA033 100%);
+  color: var(--text-inverse);
+  box-shadow: var(--shadow-sunset);
+}
+
+.btn-primary:hover {
+  transform: translate3d(0, -2px, 0);
+  box-shadow: 0 16px 36px -4px rgba(255, 90, 34, 0.45);
+}
+
+.btn-ocean {
+  background: linear-gradient(135deg, var(--ocean-azure) 0%, var(--ocean-turquoise) 100%);
+  color: var(--text-inverse);
+  box-shadow: var(--shadow-ocean);
+}
+
+.btn-ocean:hover {
+  transform: translate3d(0, -2px, 0);
+  box-shadow: 0 16px 36px -4px rgba(2, 132, 199, 0.42);
+}
+
+.btn-whatsapp {
+  background: linear-gradient(135deg, var(--whatsapp-color) 0%, #15B853 100%);
+  color: var(--text-inverse);
+  box-shadow: 0 14px 34px -4px rgba(37, 211, 102, 0.4);
+}
+
+.btn-whatsapp:hover {
+  transform: translate3d(0, -2px, 0);
+  box-shadow: 0 16px 38px -4px rgba(37, 211, 102, 0.48);
+}
+
+.btn-wood {
+  background: var(--wood-driftwood);
+  color: #FFFFFF;
+  box-shadow: var(--shadow-sm);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-wood:hover {
+  background: var(--wood-dark);
+  transform: translate3d(0, -2px, 0);
+}
+
+.btn-glass {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--beach-navy);
+  border: 2px solid rgba(255, 122, 34, 0.2);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-glass:hover {
+  background: #FFFFFF;
+  color: var(--sunset-orange);
+  border-color: var(--sunset-orange);
+  transform: translate3d(0, -2px, 0);
+}
+
+.btn-sm {
+  padding: 10px 22px;
+  font-size: 0.9rem;
+}
+
+.btn-lg {
+  padding: 18px 38px;
+  font-size: 1.125rem;
+}
+
+/* ==========================================================================
+   Navbar com Toque Praiano Estabilizada (Sem saltos de altura)
+   ========================================================================== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: 1000;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  background: rgba(255, 248, 240, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 2px solid rgba(255, 122, 34, 0.16);
+}
+
+.header.scrolled {
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 8px 24px rgba(10, 30, 48, 0.08);
+  border-bottom-color: rgba(6, 182, 212, 0.22);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-logo {
+  height: 56px;
+  width: auto;
+  border-radius: var(--radius-sm);
+  border: 2px solid #FFFFFF;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease;
+}
+
+.header.scrolled .brand-logo {
+  transform: scale(0.92);
+  transform-origin: left center;
+}
+
+.brand-logo:hover {
+  transform: scale(1.03) rotate(-1.5deg);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: var(--beach-navy);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.brand-tagline {
+  font-size: 0.725rem;
+  font-weight: 700;
+  color: var(--sunset-orange);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-desktop {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.nav-link {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy-muted);
+  position: relative;
+  padding: 6px 0;
+  transition: color var(--transition-fast);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--sunset-orange), var(--sunset-gold));
+  border-radius: var(--radius-full);
+  transition: width var(--transition-normal);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--sunset-orange);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 42px;
+  height: 42px;
+  padding: 9px;
+  border-radius: var(--radius-sm);
+  background: var(--sand-medium);
+  border: 1.5px solid var(--sand-dune);
+}
+
+.menu-toggle span {
+  width: 100%;
+  height: 3px;
+  background-color: var(--beach-navy);
+  border-radius: 4px;
+  transition: all var(--transition-normal);
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile Nav Drawer */
+.nav-mobile {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  width: 100%;
+  height: calc(100vh - var(--header-height));
+  background: rgba(255, 253, 249, 0.98);
+  backdrop-filter: blur(20px);
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transform: translateX(-100%);
+  transition: transform var(--transition-normal);
+  z-index: 999;
+  overflow-y: auto;
+  border-top: 2px solid var(--sand-dune);
+}
+
+.nav-mobile.open {
+  transform: translateX(0);
+}
+
+.nav-mobile .nav-link {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--beach-navy);
+  padding: 12px 0;
+  border-bottom: 1.5px solid var(--sand-warm);
+}
+
+/* ==========================================================================
+   Hero Section 100% Estilo Praia & Beach Resort
+   ========================================================================== */
+.hero {
+  position: relative;
+  min-height: 94vh;
+  display: flex;
+  align-items: center;
+  padding-top: calc(var(--header-height) + 30px);
+  padding-bottom: 90px;
+  overflow: hidden;
+  background: 
+    radial-gradient(circle at 78% 22%, rgba(255, 90, 34, 0.28) 0%, rgba(245, 158, 11, 0.18) 35%, transparent 65%),
+    radial-gradient(circle at 18% 78%, rgba(6, 182, 212, 0.22) 0%, rgba(2, 132, 199, 0.16) 40%, transparent 65%),
+    linear-gradient(135deg, #FFEFE2 0%, #FFE2D1 32%, #E0F8FD 72%, #CEF1F7 100%);
+}
+
+.hero-tropical-leaves {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-sun-glow {
+  position: absolute;
+  top: 4%;
+  right: 14%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 102, 34, 0.32) 0%, rgba(245, 158, 11, 0.22) 42%, rgba(6, 182, 212, 0.14) 65%, transparent 75%);
+  border-radius: 50%;
+  filter: blur(55px);
+  pointer-events: none;
+  animation: sunsetAtmospherePulse 9s ease-in-out infinite;
+  transform: translate3d(0, 0, 0);
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 52px;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hero-beach-welcome {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-title {
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  font-weight: 900;
+  line-height: 1.08;
+  color: var(--beach-navy);
+}
+
+.hero-title .beach-gradient {
+  background: linear-gradient(135deg, var(--sunset-orange) 0%, #FFA834 60%, var(--sunset-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.hero-description {
+  font-size: 1.2rem;
+  color: var(--navy-muted);
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+/* Quick Features em Formato de Pranchas / Madeira */
+.hero-planks-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 24px;
+  border-top: 2px dashed var(--sand-dune);
+}
+
+.hero-plank-item {
+  background: #FFFFFF;
+  border-radius: var(--radius-md);
+  padding: 16px;
+  border: 1.5px solid var(--sand-warm);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.plank-icon {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.plank-text h5 {
+  font-size: 0.95rem;
+  color: var(--beach-navy);
+  line-height: 1.2;
+}
+
+.plank-text span {
+  font-size: 0.775rem;
+  color: var(--text-secondary);
+}
+
+/* Card Showcase do Hero com Visual Pé na Areia */
+.hero-media {
+  position: relative;
+}
+
+.hero-polaroid-stack {
+  position: relative;
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+.hero-photo-frame {
+  position: relative;
+  background: #FFFFFF;
+  padding: 16px 16px 54px 16px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 2px solid rgba(255, 122, 34, 0.25);
+  transform: rotate(-2deg);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.hero-photo-frame:hover {
+  transform: rotate(0deg);
+  box-shadow: 0 26px 54px -10px rgba(10, 30, 48, 0.2);
+}
+
+.hero-photo-img {
+  width: 100%;
+  aspect-ratio: 4 / 4.8;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.hero-polaroid-caption {
+  position: absolute;
+  bottom: 14px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-beach);
+  font-size: 1.6rem;
+  color: var(--wood-dark);
+}
+
+.hero-floating-coconut {
+  position: absolute;
+  bottom: -20px;
+  left: -28px;
+  background: #FFFFFF;
+  padding: 14px 20px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 28px rgba(10, 30, 48, 0.12);
+  border: 2px solid var(--sunset-orange);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 4;
+}
+
+.hero-floating-sunset {
+  position: absolute;
+  top: -15px;
+  right: -20px;
+  background: #FFFFFF;
+  padding: 12px 18px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 28px rgba(10, 30, 48, 0.12);
+  border: 2px solid var(--ocean-azure);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 4;
+}
+
+/* ==========================================================================
+   Ticker Marquee Praiano (Fluido a 60fps, sem tremor de subpixel)
+   ========================================================================== */
+.beach-ticker-bar {
+  background: linear-gradient(90deg, #FF5A22 0%, #FF8C33 35%, #F59E0B 65%, #06B6D4 100%);
+  color: #FFFFFF;
+  padding: 16px 0;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(255, 90, 34, 0.22);
+  position: relative;
+  z-index: 10;
+  mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  gap: 48px;
+  animation: tickerScroll 60s linear infinite;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   Diferenciais em Formato de Quiosque de Praia
+   ========================================================================== */
+.beach-kiosk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+.beach-kiosk-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  border: 2px solid rgba(255, 122, 34, 0.16);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.beach-kiosk-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, var(--sunset-orange), var(--sunset-gold));
+}
+
+.beach-kiosk-card:hover {
+  transform: translate3d(0, -4px, 0);
+  box-shadow: var(--shadow-md);
+  border-color: var(--sunset-coral);
+}
+
+.kiosk-badge-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-md);
+  background: var(--sand-light);
+  border: 1.5px solid var(--sand-warm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.1rem;
+}
+
+.kiosk-title {
+  font-size: 1.35rem;
+  color: var(--beach-navy);
+}
+
+.kiosk-desc {
+  font-size: 1rem;
+  color: var(--navy-muted);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Sobre: Mural de Fotos Praianas & Inclusão
+   ========================================================================== */
+.about-beach-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about-beach-collage {
+  position: relative;
+}
+
+.about-sand-main-photo {
+  width: 88%;
+  aspect-ratio: 4 / 3.2;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+  border: 8px solid #FFFFFF;
+  box-shadow: var(--shadow-lg);
+}
+
+.about-sand-overlay-photo {
+  position: absolute;
+  bottom: -40px;
+  right: 0;
+  width: 58%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  border: 8px solid #FFFFFF;
+  box-shadow: var(--shadow-lg);
+}
+
+.about-badge-stamp {
+  position: absolute;
+  top: -20px;
+  left: -15px;
+  background: linear-gradient(135deg, var(--sunset-orange) 0%, #FFA033 100%);
+  color: #FFFFFF;
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  font-weight: 800;
+  font-size: 0.95rem;
+  box-shadow: var(--shadow-sunset);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.about-beach-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-beach-text {
+  font-size: 1.125rem;
+  color: var(--navy-muted);
+  line-height: 1.75;
+}
+
+.beach-safe-haven-card {
+  background: #FFFFFF;
+  border: 2px solid var(--sand-warm);
+  border-left: 6px solid var(--ocean-azure);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.safe-haven-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.safe-haven-body h4 {
+  font-size: 1.15rem;
+  color: var(--beach-navy);
+  margin-bottom: 6px;
+}
+
+.safe-haven-body p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Experiências em Estilo Beach Club
+   ========================================================================== */
+.beach-experiences-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 32px;
+}
+
+.beach-exp-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  border: 2px solid rgba(6, 182, 212, 0.2);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.beach-exp-card:hover {
+  transform: translate3d(0, -4px, 0);
+  box-shadow: var(--shadow-md);
+  border-color: var(--sunset-orange);
+}
+
+.beach-exp-img-box {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  background: var(--sand-medium);
+}
+
+.beach-exp-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+.beach-exp-card:hover .beach-exp-img {
+  transform: scale(1.04);
+}
+
+.beach-exp-tag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(10, 30, 48, 0.88);
+  backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.beach-exp-body {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 16px;
+}
+
+.beach-exp-title {
+  font-size: 1.4rem;
+  color: var(--beach-navy);
+}
+
+.beach-exp-desc {
+  font-size: 1rem;
+  color: var(--navy-muted);
+  line-height: 1.6;
+}
+
+.beach-check-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 6px 0 16px;
+}
+
+.beach-check-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.beach-check-list li span {
+  color: var(--sunset-orange);
+  font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   Cardápio: Estilo Lousa Tropical & Pratos Pé na Areia
+   ========================================================================== */
+.beach-menu-tabs-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 44px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+}
+
+.beach-menu-tabs {
+  display: inline-flex;
+  gap: 10px;
+  background: #FFFFFF;
+  padding: 8px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--sand-warm);
+  box-shadow: var(--shadow-sm);
+}
+
+.beach-tab-btn {
+  padding: 12px 26px;
+  border-radius: var(--radius-full);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--navy-muted);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.beach-tab-btn.active,
+.beach-tab-btn:hover {
+  background: linear-gradient(135deg, var(--sunset-orange) 0%, #FFA033 100%);
+  color: #FFFFFF;
+  box-shadow: 0 6px 18px rgba(255, 90, 34, 0.35);
+}
+
+.beach-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 28px;
+  margin-bottom: 50px;
+}
+
+.beach-food-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  border: 2px solid rgba(255, 122, 34, 0.16);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.beach-food-card:hover {
+  transform: translate3d(0, -4px, 0);
+  box-shadow: var(--shadow-md);
+  border-color: var(--sunset-orange);
+}
+
+.beach-food-img-wrap {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  background: var(--sand-medium);
+}
+
+.beach-food-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+.beach-food-card:hover .beach-food-img {
+  transform: scale(1.04);
+}
+
+.beach-food-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--sunset-gold);
+  color: #FFFFFF;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.775rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.beach-food-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.beach-food-title {
+  font-size: 1.25rem;
+  color: var(--beach-navy);
+}
+
+.beach-food-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Banner de Cardápio Completo Estilo Cabana */
+.beach-menu-hut-banner {
+  background: linear-gradient(135deg, var(--beach-navy) 0%, #153857 100%);
+  border-radius: var(--radius-xl);
+  padding: 48px;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  box-shadow: var(--shadow-lg);
+  border: 3px solid var(--sand-dune);
+  position: relative;
+  overflow: hidden;
+}
+
+.beach-menu-hut-banner::before {
+  content: '🌴';
+  position: absolute;
+  right: 20px;
+  top: -20px;
+  font-size: 140px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.beach-hut-text h3 {
+  color: #FFFFFF;
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.beach-hut-text p {
+  color: #E2E8F0;
+  font-size: 1.1rem;
+  max-width: 600px;
+}
+
+/* ==========================================================================
+   Aniversariantes: VIP Lounge de Praia
+   ========================================================================== */
+.beach-vip-birthday-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  border: 3px solid var(--sunset-coral);
+  box-shadow: 0 20px 60px -15px rgba(255, 90, 34, 0.25);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  padding: 54px;
+  position: relative;
+  overflow: hidden;
+}
+
+.beach-birthday-ribbon {
+  position: absolute;
+  top: 28px;
+  right: -60px;
+  background: linear-gradient(90deg, var(--sunset-orange), #FFA033);
+  color: #FFFFFF;
+  padding: 8px 65px;
+  font-weight: 900;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  transform: rotate(45deg);
+  box-shadow: 0 4px 12px rgba(255, 90, 34, 0.4);
+}
+
+.birthday-perk-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--sand-light);
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--sand-warm);
+}
+
+.birthday-perk-row h5 {
+  font-size: 1.05rem;
+  color: var(--beach-navy);
+  margin-bottom: 4px;
+}
+
+.birthday-perk-row p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   Galeria de Fotos Estilo Molduras Praianas
+   ========================================================================== */
+.gallery-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.gallery-filter-btn {
+  padding: 10px 22px;
+  border-radius: var(--radius-full);
+  font-size: 0.925rem;
+  font-weight: 800;
+  background: #FFFFFF;
+  color: var(--navy-muted);
+  border: 2px solid var(--sand-warm);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.gallery-filter-btn.active,
+.gallery-filter-btn:hover {
+  background: var(--beach-navy);
+  color: #FFFFFF;
+  border-color: var(--beach-navy);
+}
+
+.beach-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.beach-gallery-item {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 3.2;
+  background: var(--sand-medium);
+  box-shadow: var(--shadow-sm);
+  border: 3px solid #FFFFFF;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.beach-gallery-item:hover {
+  transform: translate3d(0, -4px, 0);
+  box-shadow: var(--shadow-md);
+  border-color: var(--sunset-orange);
+}
+
+.beach-gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+.beach-gallery-item:hover .beach-gallery-img {
+  transform: scale(1.05);
+}
+
+.gallery-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 30, 48, 0.85) 0%, transparent 60%);
+  display: flex;
+  align-items: flex-end;
+  padding: 22px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.beach-gallery-item:hover .gallery-item-overlay {
+  opacity: 1;
+}
+
+.gallery-caption {
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   Formulário de Reserva: Cabana de Reservas WhatsApp
+   ========================================================================== */
+.reservation-container {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 44px;
+  align-items: start;
+}
+
+.beach-booking-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  border: 2px solid var(--sand-warm);
+  padding: 44px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+.beach-booking-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, var(--sunset-orange), var(--ocean-azure));
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group-full {
+  grid-column: 1 / -1;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--beach-navy);
+  margin-bottom: 8px;
+}
+
+.form-label-required::after {
+  content: ' *';
+  color: var(--sunset-orange);
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 16px;
+  color: var(--wood-warm);
+  font-size: 1.2rem;
+  pointer-events: none;
+}
+
+.form-control {
+  width: 100%;
+  padding: 14px 16px 14px 48px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--sand-warm);
+  background: var(--sand-light);
+  font-size: 1rem;
+  color: var(--beach-navy);
+  transition: all var(--transition-fast);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--sunset-orange);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 4px rgba(255, 90, 34, 0.15);
+}
+
+select.form-control {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234A3321' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 18px;
+  padding-right: 44px;
+}
+
+textarea.form-control {
+  padding-left: 16px;
+  resize: vertical;
+  min-height: 96px;
+}
+
+/* Radio Choice Pills */
+.choice-pill-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.choice-pill {
+  position: relative;
+}
+
+.choice-pill input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.choice-pill label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--sand-warm);
+  background: var(--sand-light);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.choice-pill input:checked + label {
+  border-color: var(--sunset-orange);
+  background: var(--sunset-orange);
+  color: #FFFFFF;
+  box-shadow: 0 6px 18px rgba(255, 90, 34, 0.3);
+}
+
+/* WhatsApp Mockup Box */
+.whatsapp-preview-card {
+  background: #E5DDD5;
+  background-image: radial-gradient(#d3c6b8 1px, transparent 1px);
+  background-size: 16px 16px;
+  border-radius: var(--radius-xl);
+  border: 2px solid var(--sand-dune);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+.whatsapp-preview-header {
+  background: #075E54;
+  color: #FFFFFF;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.wa-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #FFFFFF;
+}
+
+.wa-status-info h4 {
+  color: #FFFFFF;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.wa-status-info span {
+  font-size: 0.8rem;
+  color: #A3E4D7;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.wa-bubble-area {
+  padding: 22px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 400px;
+}
+
+.wa-incoming-msg {
+  background: #FFFFFF;
+  padding: 14px 18px;
+  border-radius: 0 14px 14px 14px;
+  max-width: 88%;
+  font-size: 0.92rem;
+  color: #111B21;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  line-height: 1.5;
+}
+
+.wa-outgoing-msg {
+  align-self: flex-end;
+  background: #DCF8C6;
+  padding: 16px 20px;
+  border-radius: 14px 0 14px 14px;
+  max-width: 92%;
+  font-size: 0.92rem;
+  color: #111B21;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.wa-timestamp {
+  display: block;
+  text-align: right;
+  font-size: 0.725rem;
+  color: #667781;
+  margin-top: 6px;
+}
+
+.whatsapp-preview-footer {
+  background: #F0F2F5;
+  padding: 16px 20px;
+  border-top: 1px solid #D1D7DB;
+}
+
+/* ==========================================================================
+   FAQ Acordeão
+   ========================================================================== */
+.faq-list {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.faq-item {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--sand-warm);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: all var(--transition-fast);
+}
+
+.faq-item:hover {
+  border-color: var(--sunset-orange);
+}
+
+.faq-item.active {
+  border-color: var(--sunset-orange);
+  box-shadow: var(--shadow-md);
+}
+
+.faq-button {
+  width: 100%;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--beach-navy);
+  gap: 16px;
+}
+
+.faq-button svg {
+  transition: transform var(--transition-normal);
+  color: var(--sunset-orange);
+  flex-shrink: 0;
+}
+
+.faq-item.active .faq-button svg {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  padding: 0 28px;
+  font-size: 1.025rem;
+  color: var(--navy-muted);
+  line-height: 1.7;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 420px;
+  padding: 0 28px 24px;
+}
+
+/* ==========================================================================
+   Localização & Mapa
+   ========================================================================== */
+.location-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 44px;
+  align-items: center;
+}
+
+.location-details-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  border: 2px solid var(--sand-warm);
+  padding: 40px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.location-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.location-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--sand-light);
+  border: 1.5px solid var(--sand-warm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.location-text h4 {
+  font-size: 1.15rem;
+  margin-bottom: 4px;
+  color: var(--beach-navy);
+}
+
+.location-text p {
+  color: var(--navy-muted);
+  font-size: 1rem;
+}
+
+.map-embed-wrapper {
+  width: 100%;
+  height: 460px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 6px solid #FFFFFF;
+}
+
+.map-embed-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ==========================================================================
+   Final CTA Banner Estilo Sunset Beach Party
+   ========================================================================== */
+.beach-sunset-cta {
+  background: 
+    radial-gradient(circle at 18% 30%, rgba(255, 255, 255, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(6, 182, 212, 0.28) 0%, transparent 50%),
+    linear-gradient(135deg, #FF5A22 0%, #FF8C33 35%, #F59E0B 70%, #06B6D4 100%);
+  color: #FFFFFF;
+  padding: 90px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.beach-sunset-cta-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.beach-sunset-title {
+  color: #FFFFFF;
+  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+  line-height: 1.1;
+}
+
+.beach-sunset-desc {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.25rem;
+  line-height: 1.65;
+}
+
+/* ==========================================================================
+   Rodapé (Footer)
+   ========================================================================== */
+.footer {
+  background: var(--beach-navy);
+  color: #CBD5E1;
+  padding: 80px 0 30px;
+  position: relative;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 44px;
+  margin-bottom: 60px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.footer-brand-logo {
+  height: 64px;
+  width: auto;
+  border-radius: var(--radius-sm);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-col-title {
+  color: #FFFFFF;
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links a {
+  font-size: 0.95rem;
+  color: #94A3B8;
+  transition: all var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--sunset-gold-light);
+  transform: translateX(4px);
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: #CBD5E1;
+}
+
+.footer-social-row {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-social-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #FFFFFF;
+  transition: all var(--transition-fast);
+}
+
+.footer-social-btn:hover {
+  background: var(--sunset-orange);
+  transform: translateY(-4px);
+}
+
+.footer-bottom {
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 0.9rem;
+  color: #64748B;
+}
+
+/* ==========================================================================
+   Botão Flutuante de WhatsApp
+   ========================================================================== */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--whatsapp-color) 0%, #15B853 100%);
+  color: #FFFFFF;
+  padding: 14px 22px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 12px 36px rgba(37, 211, 102, 0.5);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.95rem;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.floating-whatsapp:hover {
+  transform: translate3d(0, -3px, 0) scale(1.02);
+  box-shadow: 0 16px 42px rgba(37, 211, 102, 0.6);
+  color: #FFFFFF;
+}
+
+.online-pulse-dot {
+  width: 10px;
+  height: 10px;
+  background: #4ADE80;
+  border: 2px solid #FFFFFF;
+  border-radius: 50%;
+  animation: pulseDot 2.8s ease-in-out infinite;
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 30, 48, 0.95);
+  backdrop-filter: blur(12px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.lightbox-modal.active {
+  display: flex;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  border: 4px solid #FFFFFF;
+}
+
+.lightbox-caption {
+  color: #FFFFFF;
+  margin-top: 14px;
+  font-size: 1.2rem;
+  font-family: var(--font-beach);
+  text-align: center;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -48px;
+  right: 0;
+  color: #FFFFFF;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Toast */
+.toast-msg {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--beach-navy);
+  color: #FFFFFF;
+  padding: 14px 26px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-lg);
+  font-weight: 700;
+  font-size: 0.95rem;
+  z-index: 3000;
+  transition: transform var(--transition-normal), opacity var(--transition-fast);
+  opacity: 0;
+  pointer-events: none;
+  border: 2px solid var(--sunset-orange);
+}
+
+.toast-msg.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Breakpoints Responsivos
+   ========================================================================== */
+@media (max-width: 1080px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .hero-content {
+    align-items: center;
+  }
+
+  .hero-beach-welcome {
+    justify-content: center;
+  }
+
+  .hero-description {
+    margin: 0 auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-planks-row {
+    max-width: 520px;
+    margin: 16px auto 0;
+  }
+
+  .about-beach-wrapper,
+  .beach-vip-birthday-card,
+  .reservation-container,
+  .location-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-beach-collage {
+    max-width: 500px;
+    margin: 0 auto 30px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-desktop,
+  .header-actions .btn {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .section-padding {
+    padding: 70px 0;
+  }
+
+  .hero-planks-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .beach-booking-card,
+  .beach-vip-birthday-card {
+    padding: 30px 20px;
+  }
+
+  .beach-menu-hut-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 32px 20px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .floating-whatsapp span {
+    display: none;
+  }
+
+  .floating-whatsapp {
+    padding: 16px;
+    bottom: 20px;
+    right: 20px;
+  }
+}

@@ -1,0 +1,154 @@
+/* ==========================================================================
+   Bene Beach Bar - Animações Praianas Estabilizadas, Suaves e Relaxantes
+   Eliminação total de tremores (subpixel jitter), acelerações bruscas e overshoot
+   ========================================================================== */
+
+/* Letreiro Marquee: 100% acelerado por hardware via translate3d, sem tremor de subpixel */
+@keyframes tickerScroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Flutuação orgânica como brisa do mar: ritmo suave, desacelerado e sem vibração */
+@keyframes calmBreezeFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0);
+  }
+}
+
+/* Pulso calmo e ritmado do botão online (sem pulsar rápido demais) */
+@keyframes pulseDot {
+  0% {
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(74, 222, 128, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
+  }
+}
+
+/* Efeito de brilho solar suave no fundo do hero */
+@keyframes sunsetAtmospherePulse {
+  0%, 100% {
+    opacity: 0.85;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05) translate3d(0, 0, 0);
+  }
+}
+
+/* ==========================================================================
+   Efeitos de Aparição na Rolagem (Scroll Reveal - Suave, Estável e Orgânico)
+   Tempo calibrado para 0.75s sem arrancadas bruscas
+   ========================================================================== */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translate3d(-24px, 0, 0);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.reveal-left.revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translate3d(24px, 0, 0);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.reveal-right.revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.reveal-zoom {
+  opacity: 0;
+  transform: scale(0.96) translate3d(0, 10px, 0);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.reveal-zoom.revealed {
+  opacity: 1;
+  transform: scale(1) translate3d(0, 0, 0);
+}
+
+/* Transições escalonadas equilibradas (sem atrasos excessivos nem atropelos) */
+.delay-100 { transition-delay: 60ms; }
+.delay-200 { transition-delay: 120ms; }
+.delay-300 { transition-delay: 180ms; }
+.delay-400 { transition-delay: 240ms; }
+
+/* Flutuações Naturais sem atrito */
+.float-bob {
+  animation: calmBreezeFloat 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+.float-bob-delay {
+  animation: calmBreezeFloat 8.5s ease-in-out infinite 1.5s;
+  will-change: transform;
+}
+
+/* Lazy Load de Imagens com Transição Suave */
+img.lazy {
+  opacity: 0;
+  filter: blur(4px);
+  transition: opacity 0.6s ease, filter 0.6s ease;
+}
+
+img.lazy.loaded {
+  opacity: 1;
+  filter: blur(0);
+}
+
+/* ==========================================================================
+   Acessibilidade: Preferência de Movimento Reduzido
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal, .reveal-left, .reveal-right, .reveal-zoom {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  img.lazy {
+    opacity: 1 !important;
+    filter: none !important;
+  }
+}
